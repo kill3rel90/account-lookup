@@ -5,10 +5,10 @@ const { decode } = require('bs58');
 const Mustache = require('mustache');
 const DOES_NOT_EXIST = " doesn't exist";
 
-function accountToLockup(masterAccountId, accountId) {
+function accountToLockup(accountId) {
   return `${sha256(Buffer.from(accountId))
     .toString("hex")
-    .slice(0, 40)}.${masterAccountId}`;
+    .slice(0, 40)}`;
 }
 
 function prepareAccountId(data) {
@@ -334,7 +334,7 @@ async function lookup() {
 //  document.getElementById("pools").innerHTML = "";
   try {
     let account = await near.account(accountId);
-    console.log(accountToLockup("lockup.near", account.accountId));
+    console.log(accountToLockup(account.accountId));
     let state = await account.state();
 //    console.log(state);
     ownerAccountBalance = state.amount;
