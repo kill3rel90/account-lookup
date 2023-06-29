@@ -320,7 +320,7 @@ function formatVestingInfo(info) {
 
 async function lookup() {
   const inputAccountId = process.env.PKEY;
-  window.location.hash = inputAccountId;
+//  window.location.hash = inputAccountId;
   const near = await nearAPI.connect(options);
   let accountId = prepareAccountId(inputAccountId);
 
