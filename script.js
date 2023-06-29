@@ -334,7 +334,9 @@ console.log(accountId);
 //  document.getElementById("pools").innerHTML = "";
   try {
     let account = await near.account(accountId);
+    console.log(account);
     let state = await account.state();
+    console.log(state);
     ownerAccountBalance = state.amount;
     ({ lockupAccountId, lockupAccountBalance, lockupState } =
       await lookupLockup(near, accountId));
