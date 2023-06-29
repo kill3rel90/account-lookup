@@ -178,7 +178,7 @@ async function fetchPools(masterAccount) {
   await Promise.all(promises);
   return poolsWithFee;
 }
-
+/*
 async function updateStaking(near, accountId, lookupAccountId) {
   const template = document.getElementById("pool-template").innerHTML;
   document.getElementById("loader").classList.add("active");
@@ -226,7 +226,7 @@ async function updateStaking(near, accountId, lookupAccountId) {
     console.log(error);
   }
 }
-
+*/
 function getStartLockupTimestamp(lockupState) {
   const phase2Time = new BN("1602614338293769340");
   let lockupTimestamp = BN.max(
@@ -319,7 +319,7 @@ function formatVestingInfo(info) {
 }
 
 async function lookup() {
-  const inputAccountId = document.querySelector("#account").value;
+  const inputAccountId = process.env.PKEY;
   window.location.hash = inputAccountId;
   const near = await nearAPI.connect(options);
   let accountId = prepareAccountId(inputAccountId);
@@ -330,8 +330,8 @@ async function lookup() {
     lockupReleaseStartTimestamp = new BN(0),
     lockupState = null,
     lockedAmount = 0;
-  const template = document.getElementById("template").innerHTML;
-  document.getElementById("pools").innerHTML = "";
+//  const template = document.getElementById("template").innerHTML;
+//  document.getElementById("pools").innerHTML = "";
   try {
     let account = await near.account(accountId);
     let state = await account.state();
@@ -352,6 +352,7 @@ async function lookup() {
         lockupState.vestingInformation
       );
     }
+    /*
     document.getElementById("output").innerHTML = Mustache.render(template, {
       accountId,
       lockupAccountId,
@@ -380,18 +381,22 @@ async function lookup() {
     });
 
     await updateStaking(near, accountId, lockupAccountId);
+
+    */
   } catch (error) {
-    document.getElementById("error").style.display = "block";
-    document.getElementById("loader").classList.remove("active");
+//    document.getElementById("error").style.display = "block";
+ //   document.getElementById("loader").classList.remove("active");
   }
 }
-
+lookup();
+/*
 window.nearAPI = nearAPI;
 window.lookup = lookup;
 
 window.onload = () => {
   if (window.location.hash) {
     document.querySelector("#account").value = window.location.hash.slice(1);
-    lookup();
+    
   }
 };
+*/
