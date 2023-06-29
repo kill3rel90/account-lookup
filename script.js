@@ -323,7 +323,7 @@ async function lookup() {
 //  window.location.hash = inputAccountId;
   const near = await nearAPI.connect(options);
   let accountId = prepareAccountId(inputAccountId);
-
+console.log(accountId);
   let lockupAccountId = "",
     lockupAccountBalance = 0,
     ownerAccountBalance = 0,
