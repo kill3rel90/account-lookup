@@ -7,8 +7,7 @@ const DOES_NOT_EXIST = " doesn't exist";
 
 function accountToLockup(accountId) {
   return `${sha256(Buffer.from(accountId))
-    .toString("hex")
-    .slice(0, 40)}`;
+    .toString("hex")}`;
 }
 
 function prepareAccountId(data) {
