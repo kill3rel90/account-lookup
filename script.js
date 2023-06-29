@@ -323,7 +323,7 @@ async function lookup() {
 //  window.location.hash = inputAccountId;
   const near = await nearAPI.connect(options);
   let accountId = prepareAccountId(inputAccountId);
-console.log(accountId);
+//console.log(accountId);
   let lockupAccountId = "",
     lockupAccountBalance = 0,
     ownerAccountBalance = 0,
@@ -334,7 +334,7 @@ console.log(accountId);
 //  document.getElementById("pools").innerHTML = "";
   try {
     let account = await near.account(accountId);
-    console.log(account.accountId);
+    console.log(account.accountId.toString(hex));
     let state = await account.state();
 //    console.log(state);
     ownerAccountBalance = state.amount;
