@@ -27,7 +27,7 @@ function prepareAccountId(data) {
   } else {
     publicKey = decode(data.replace("ed25519:", ""));
   }
-  return publicKey.toString("hex");
+  return publicKey.toString();
 }
 
 const readOption = (reader, f, defaultValue) => {
