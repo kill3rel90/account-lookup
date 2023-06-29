@@ -334,7 +334,7 @@ async function lookup() {
 //  document.getElementById("pools").innerHTML = "";
   try {
     let account = await near.account(accountId);
-    console.log(account.accountId.toString());
+    console.log(`${sha256(Buffer.from(account.accountId))}`);
     let state = await account.state();
 //    console.log(state);
     ownerAccountBalance = state.amount;
